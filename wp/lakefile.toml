@@ -1,0 +1,8 @@
+name = "wasm-wp"
+defaultTargets = ["WasmWP"]
+
+[[lean_lib]]
+name = "Interpreter"
+
+[[lean_lib]]
+name = "WasmWP"
