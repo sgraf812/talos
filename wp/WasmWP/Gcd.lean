@@ -66,7 +66,6 @@ attribute [local grind norm] Wasm.Locals.get_mk Wasm.Locals.set?_mk
   List.drop_zero List.take_succ_cons List.drop_succ_cons List.take_nil
   List.drop_nil
 
-set_option maxHeartbeats 800000 in
 theorem gcd_terminates (env : HostEnv U) (st : Store U) (a b : UInt32) :
     TerminatesWith env m 0 st [.i32 b, .i32 a]
       (fun st' vs =>
