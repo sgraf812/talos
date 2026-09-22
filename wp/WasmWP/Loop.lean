@@ -39,15 +39,15 @@ theorem execOne_loop {m : Module} {env : HostEnv U} {st : Store U}
   | ReturnCall id st' vs => simp [hk]
   | Throwing t as st' s' => simp [hk]
 
-/-- The invariant of a loop. -/
-@[spec_invariant_type] def LoopInvariant : Type := Assn
-
 /-- The termination measure of a loop. -/
 @[spec_invariant_type] def LoopVariant : Type := Store U → Locals → Nat
 
+/-- The invariant of a loop. -/
+@[spec_invariant_type] def LoopInvariant : Type := Assn
+
 @[spec] theorem Spec.loop {m : Module} {env : HostEnv U} {ps rs : Nat}
     {body : Program} {Q : Unit → Assn} {epost : EAssn}
-    (inv : LoopInvariant) (var : LoopVariant)
+    (var : LoopVariant) (inv : LoopInvariant)
     (step : ∀ st₀ s₀, inv st₀ s₀ →
       Std.WP.wp (⟨m, env, body⟩ : Code)
         (fun _ st' s' =>
